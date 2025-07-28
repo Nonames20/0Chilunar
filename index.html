@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Profile Box</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
   <style>
     .profile-box {
@@ -16,9 +16,6 @@
     .profile-box:hover {
       transform: translateY(-2px);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    }
-    .avatar {
-      background: linear-gradient(135deg, #38bdf8, #a78bfa);
     }
     .text-gradient {
       background: linear-gradient(to right, #0f172a, #a7f3d0);
@@ -55,10 +52,10 @@
     <div class="relative z-10">
       <div class="p-6 flex items-center space-x-4">
         <!-- Avatar -->
-        <div class="relative avatar">
+        <div class="relative">
           <img src="https://s3.tebi.io/ely.bucket.s0.io.biti/54ef5a24da91b7d4079d7b8ea5237844.jpg"
                class="w-16 h-16 rounded-full object-cover shadow-inner border-2 border-white"
-               alt="Avatar">
+               alt="Avatar" />
           <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></div>
         </div>
 
@@ -80,9 +77,10 @@
 
       <!-- Join Button -->
       <div class="px-6 pb-6">
-        <button class="w-full py-2 bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white rounded-lg transition-all duration-300 font-medium flex justify-center items-center gap-2">
+        <a href="https://discord.gg/SEuTEKXyH4" target="_blank" rel="noopener noreferrer"
+           class="block w-full text-center py-2 bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white rounded-lg transition-all duration-300 font-medium flex justify-center items-center gap-2">
           <i class="fas fa-user-plus"></i> Join Server
-        </button>
+        </a>
       </div>
     </div>
   </div>
@@ -91,7 +89,6 @@
     const profileData = {
       name: "Một góc của gió",
       title: "Không cần nhiều lời, gió đủ hiểu",
-      avatarInitials: "MG",
       isOnline: true,
     };
 
@@ -99,7 +96,7 @@
       document.getElementById('profileName').textContent = profileData.name;
       document.getElementById('profileTitle').textContent = profileData.title;
 
-      const onlineIndicator = document.querySelector('.avatar div');
+      const onlineIndicator = document.querySelector('img + div');
       if (!profileData.isOnline) {
         onlineIndicator.classList.remove('bg-green-500');
         onlineIndicator.classList.add('bg-gray-400');
@@ -107,5 +104,4 @@
     });
   </script>
 </body>
-            </html>
-            
+</html>
