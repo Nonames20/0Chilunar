@@ -10,6 +10,8 @@
   <style>
     .profile-box {
       transition: all 0.3s ease;
+      position: relative;
+      z-index: 10;
     }
     .profile-box:hover {
       transform: translateY(-2px);
@@ -23,24 +25,42 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+    .video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -10;
+      pointer-events: none;
+      touch-action: none;
+      opacity: 0.85;
+    }
   </style>
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
 
-  <div class="profile-box bg-white rounded-xl shadow-lg overflow-hidden w-full max-w-md relative">
-    <!-- Background Image -->
-    <div class="absolute inset-0 bg-[url('https://s3.tebi.io/ely.bucket.s0.io.biti/taoanhdep_mo_rong_anh_15160.jpeg')] bg-cover bg-center opacity-25"></div>
+  <!-- VIDEO BACKGROUND -->
+  <video autoplay muted loop playsinline class="video-background">
+    <source src="https://s3.tebi.io/ely.bucket.s0.io.biti/elaina-drinking-coffee-near-window-moewalls-com.mp4" type="video/mp4">
+  </video>
+
+  <!-- PROFILE BOX -->
+  <div class="profile-box bg-white rounded-xl shadow-lg overflow-hidden w-full max-w-md">
+    <!-- Background Overlay Image -->
+    <div class="absolute inset-0 bg-[url('https://s3.tebi.io/ely.bucket.s0.io.biti/taoanhdep_mo_rong_anh_15160.jpeg')] bg-cover bg-center opacity-25 z-0"></div>
 
     <!-- Content Layer -->
     <div class="relative z-10">
       <div class="p-6 flex items-center space-x-4">
         <!-- Avatar -->
-        <div class="relative">
-  <img src="https://s3.tebi.io/ely.bucket.s0.io.biti/54ef5a24da91b7d4079d7b8ea5237844.jpg"
-       class="w-16 h-16 rounded-full object-cover shadow-inner border-2 border-white"
-       alt="Avatar">
-  <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></div>
-</div>
+        <div class="relative avatar">
+          <img src="https://s3.tebi.io/ely.bucket.s0.io.biti/54ef5a24da91b7d4079d7b8ea5237844.jpg"
+               class="w-16 h-16 rounded-full object-cover shadow-inner border-2 border-white"
+               alt="Avatar">
+          <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></div>
+        </div>
 
         <!-- Profile Info -->
         <div class="flex-1">
@@ -78,7 +98,6 @@
     document.addEventListener('DOMContentLoaded', function () {
       document.getElementById('profileName').textContent = profileData.name;
       document.getElementById('profileTitle').textContent = profileData.title;
-      document.getElementById('avatarInitial').textContent = profileData.avatarInitials;
 
       const onlineIndicator = document.querySelector('.avatar div');
       if (!profileData.isOnline) {
@@ -87,6 +106,6 @@
       }
     });
   </script>
-
 </body>
-</html>
+            </html>
+            
