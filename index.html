@@ -35,10 +35,28 @@
       touch-action: none;
       opacity: 0.85;
     }
+    #coffee-loader {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#coffee-loader.hide {
+  opacity: 0;
+  pointer-events: none;
+    }
+      
   </style>
 </head>
 <body class="bg-gray-100 min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
-
+<!-- COFFEE LOADING SCREEN -->
+<div id="coffee-loader" class="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-black/80 backdrop-blur-md text-white text-center transition-opacity duration-500">
+  <video autoplay muted loop playsinline class="w-24 h-24 mb-4 rounded-lg shadow-lg">
+    <source src="https://s3.tebi.io/ely.bucket.s0.io.biti/Coffee%20love.webm" type="video/webm">
+    Trình duyệt của bạn không hỗ trợ video.
+  </video>
+  <p class="text-sm animate-pulse">Đang pha một ly cà phê...</p>
+</div>
+  
   <!-- VIDEO BACKGROUND -->
   <video autoplay muted loop playsinline class="video-background">
     <source src="https://s3.tebi.io/ely.bucket.s0.io.biti/elaina-drinking-coffee-near-window-moewalls-com.mp4" type="video/mp4">
@@ -158,6 +176,14 @@ function changeQuote() {
 // Khởi tạo
 qb.textContent = quotes[Math.floor(Math.random() * quotes.length)];
 setInterval(changeQuote, 8000);
+    // ===== COFFEE LOADER =====
+window.addEventListener('load', () => {
+  const loader = document.getElementById('coffee-loader');
+  setTimeout(() => {
+    loader.classList.add('hide');
+  }, 3000);
+});
+    
   </script>
 </body>
 </html>
