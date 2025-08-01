@@ -124,7 +124,40 @@
 
     setInterval(updateRealTimeClock, 1000);
     updateRealTimeClock();
-    
+    // quotes 
+    const quotes = [
+  "「Even the darkest night will end and the sun will rise.」",
+  "「Create with passion or not at all.」",
+  "「Code is poetry.」",
+  "「Believe you can and you're halfway there.」",
+  "「Chẳng có gì là mãi mãi cả.」",
+  "「Con người không muốn tìm cách hoàn thiện mà chỉ muốn bình yên.」",
+  "「Không sợ đi chậm, chỉ sợ đứng yên.」",
+  "「Simplicity is the ultimate sophistication.」",
+  "「You are not your job, you are not how much money you have.」",
+  "「Đừng cố gắng nổi bật — hãy cố gắng có ích.」",
+  "「The quieter you become, the more you are able to hear.」",
+  "「Hạnh phúc là khi bạn không cần phải giải thích điều gì với ai.」",
+  "「Focus on progress, not perfection.」",
+  "「Chiến thắng lớn nhất là chiến thắng chính mình.」",
+  "「Don't adapt to the energy in the room. Influence the energy in the room.」",
+  "「Thứ đáng sợ không phải là thất bại, mà là không dám bắt đầu.」"
+];
+    const qb = document.getElementById('quote-box');
+
+// Hàm đổi quote có hiệu ứng fade
+function changeQuote() {
+  qb.classList.add('fade-out'); // fade out
+
+  setTimeout(() => {
+    qb.textContent = quotes[Math.floor(Math.random() * quotes.length)];
+    qb.classList.remove('fade-out'); // fade in sau khi đổi nội dung
+  }, 500); // thời gian khớp với transition
+}
+
+// Khởi tạo
+qb.textContent = quotes[Math.floor(Math.random() * quotes.length)];
+setInterval(changeQuote, 8000);
   </script>
 </body>
 </html>
